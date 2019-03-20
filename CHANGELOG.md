@@ -2,9 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [](https://github.com/ehdieunguyen/demo_versioning/compare/v1.0.5...v) (2019-03-20)
+
+
+
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
 # [](https://github.com/ehdieunguyen/demo_versioning/compare/v1.0.4...v) (2019-03-20)
 
-
+- Number 1
+- Number 2
+- Number 3
 
 # Change Log
 
