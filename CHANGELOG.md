@@ -2,15 +2,19 @@
 
 *   Fix date value when casting a multiparameter date hash to not convert from Gregorian date to Julian date.
 
-Before:
+  Before:
 
-Day.new({"day(1i)"=>"1", "day(2i)"=>"1", "day(3i)"=>"1"})
-=> #<Day id: nil, day: "0001-01-03", created_at: nil, updated_at: nil>
+  ```
+    Day.new({"day(1i)"=>"1", "day(2i)"=>"1", "day(3i)"=>"1"})
+    => #<Day id: nil, day: "0001-01-03", created_at: nil, updated_at: nil>
+  ```
 
-After:
+  After:
 
-Day.new({"day(1i)"=>"1", "day(2i)"=>"1", "day(3i)"=>"1"})
-=> #<Day id: nil, day: "0001-01-01", created_at: nil, updated_at: nil>
+  ```
+    Day.new({"day(1i)"=>"1", "day(2i)"=>"1", "day(3i)"=>"1"})
+    => #<Day id: nil, day: "0001-01-01", created_at: nil, updated_at: nil>
+  ```
 
 Fixes #28521.
 
@@ -24,8 +28,9 @@ defaults to 1970 instead of the expected 2000. This results in the attribute
 changing as a result of the save.
 
 Before:
+
   ```
-event = Event.new(start_time: { 4 => 20, 5 => 30 })
+  event = Event.new(start_time: { 4 => 20, 5 => 30 })
   event.start_time # => 1970-01-01 20:30:00 UTC
   event.save
   event.reload
@@ -33,8 +38,9 @@ event = Event.new(start_time: { 4 => 20, 5 => 30 })
   ```
 
   After:
+
   ```
-event = Event.new(start_time: { 4 => 20, 5 => 30 })
+  event = Event.new(start_time: { 4 => 20, 5 => 30 })
   event.start_time # => 2000-01-01 20:30:00 UTC
   event.save
   event.reload
@@ -68,15 +74,17 @@ event = Event.new(start_time: { 4 => 20, 5 => 30 })
   *   Fix `ActiveModel::Serializers::JSON#as_json` method for timestamps.
 
   Before:
+
   ```
-contact = Contact.new(created_at: Time.utc(2006, 8, 1))
+  contact = Contact.new(created_at: Time.utc(2006, 8, 1))
   contact.as_json["created_at"] # => 2006-08-01 00:00:00 UTC
   ```
 
   After:
+
   ```
-contact = Contact.new(created_at: Time.utc(2006, 8, 1))
-  contact.as_json["created_at"] # => "2006-08-01T00:00:00.000Z"
+    contact = Contact.new(created_at: Time.utc(2006, 8, 1))
+    contact.as_json["created_at"] # => "2006-08-01T00:00:00.000Z"
   ```
 
   *Bogdan Gusiev*
@@ -89,14 +97,16 @@ contact = Contact.new(created_at: Time.utc(2006, 8, 1))
 
   Example:
 
-  class User < ActiveRecord::Base
-  has_secure_password :recovery_password, validations: false
-  end
+  ```
+    class User < ActiveRecord::Base
+      has_secure_password :recovery_password, validations: false
+    end
 
-user = User.new()
-  user.recovery_password = "42password"
-  user.recovery_password_digest # => "$2a$04$iOfhwahFymCs5weB3BNH/uX..."
-  user.authenticate_recovery_password('42password') # => user
+    user = User.new()
+    user.recovery_password = "42password"
+    user.recovery_password_digest # => "$2a$04$iOfhwahFymCs5weB3BNH/uX..."
+    user.authenticate_recovery_password('42password') # => user
+  ```
 
   *Unathi Chonco*
 
