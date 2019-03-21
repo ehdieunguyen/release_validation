@@ -5,6 +5,7 @@
 version: 2
 jobs:
   publish-github-release:
+    working_directory: ~/demo_versioning
     docker:
       - image: cibuilds/github:0.10
     steps:
@@ -13,7 +14,7 @@ jobs:
           command: |
             VERSION='v.2.0.0'
             BODY_CONTENT='This is demo content'
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./demo_versioning
 
 workflows:
   version: 2
