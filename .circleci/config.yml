@@ -9,13 +9,12 @@ jobs:
       - image: cibuilds/github:0.10
     steps:
       - attach_workspace:
-          at: /tmp/demo_versioning
+          at: ./demo_versioning
       - run:
           name: "Publish Release on GitHub"
           command: |
             VERSION='v.2.0.0'
-            BODY_CONTENT='This is demo content'
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} /tmp/demo_versioning
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./demo_versioning/
 
 workflows:
   version: 2
