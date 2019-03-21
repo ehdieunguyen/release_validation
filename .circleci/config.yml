@@ -15,7 +15,7 @@ jobs:
           command: |
             VERSION='v.2.0.0'
             BODY_CONTENT='This is demo content'
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} b ${BODY_CONTENT} -delete ${VERSION} ./
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b ${BODY_CONTENT} -delete ${VERSION} ./
 
 workflows:
   version: 2
