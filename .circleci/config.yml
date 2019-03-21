@@ -5,6 +5,8 @@
 version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/ruby:2.4.2-jessie-node
     steps:
       - checkout
   publish-github-release:
@@ -23,6 +25,7 @@ jobs:
     version: 2
     release:
       jobs:
+        - build
         - publish-github-release:
           filters:
             branches:
