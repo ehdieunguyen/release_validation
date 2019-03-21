@@ -4,6 +4,12 @@
 #
 version: 2
 jobs:
+  build:
+    docker:
+      -  image: ruby:2.4
+    working_directory: ~/demo_versioning
+    steps:
+      - checkout
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
