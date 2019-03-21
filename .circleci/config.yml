@@ -25,12 +25,14 @@ jobs:
     version: 2
     release:
       jobs:
-        - build
+        - build:
+            context: org-global
         - publish-github-release:
-          filters:
-            branches:
-              only:
-                - master
-            tags:
-              only: /^\d+\.\d+\.\d+$/
+            context: org-global
+            filters:
+              branches:
+                only:
+                  - master
+              tags:
+                only: /^\d+\.\d+\.\d+$/
 
