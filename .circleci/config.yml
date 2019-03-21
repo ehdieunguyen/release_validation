@@ -1,0 +1,30 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  publish-github-release:
+    docker:
+      - image: cibuilds/github:0.10
+    steps:
+      - attach_workspace:
+          at: ./artifacts
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
+
+  workflows:
+    version: 2
+    main:
+      jobs:
+        - publish-github-release:
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only: /^\d+\.\d+\.\d+$/
+
