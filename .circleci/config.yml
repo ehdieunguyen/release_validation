@@ -4,6 +4,9 @@
 #
 version: 2
 jobs:
+  build:
+    steps:
+      - checkout
   publish-github-release:
     docker:
       - image: cibuilds/github:0.10
