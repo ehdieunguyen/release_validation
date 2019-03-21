@@ -5,9 +5,11 @@
 version: 2
 jobs:
   publish-github-release:
+    working_directory: ~/demo_versioning
     docker:
       - image: cibuilds/github:0.10
     steps:
+      - checkout
       - run:
           name: "Publish Release on GitHub"
           command: |
