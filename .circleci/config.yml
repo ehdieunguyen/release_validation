@@ -16,16 +16,16 @@ jobs:
             VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
 
-  workflows:
-    version: 2
-    release:
-      jobs:
-        - publish-github-release:
-            context: org-global
-            filters:
-              branches:
-                only:
-                  - master
-              tags:
-                only: /^\d+\.\d+\.\d+$/
+workflows:
+  version: 2
+  release:
+    jobs:
+      - publish-github-release:
+          context: org-global
+          filters:
+            branches:
+              only:
+                - master
+            tags:
+              only: /^\d+\.\d+\.\d+$/
 
