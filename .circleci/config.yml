@@ -23,10 +23,3 @@ workflows:
     jobs:
       - publish-github-release:
           context: org-global
-          filters:
-            branches:
-              only:
-                - master
-            tags:
-              only: /^\d+\.\d+\.\d+$/
-
