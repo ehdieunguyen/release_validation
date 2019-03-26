@@ -1,0 +1,12 @@
+{
+  "name": "eh_monitoring",
+  "version": "0.4.3",
+  "documents": [
+    {
+      "name": "README",
+      "source": "README.md",
+      "format": "markdown",
+      "description": "Documentation for the EhMonitoring wrapper"
+    }
+  ]
+}

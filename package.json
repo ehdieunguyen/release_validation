@@ -1,0 +1,12 @@
+{
+  "name": "demo_versioning",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ehdieunguyen/demo_versioning.git",
+  "author": "Dieu Nguyen <dieu.nguyen@employmenthero.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "md-2-json": "^1.0.5"
+  }
+}

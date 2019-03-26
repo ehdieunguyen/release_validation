@@ -13,7 +13,25 @@ GEM_NAME = 'octokit'
 
 TARGET_GEM_VERSION = Gem::Version.new('2.1.1')
 
+module Notifier
+  class SlackNotifier
+		def call(args)
+
+		end
+
+		def new(slack_id, message)
+      @slack_id = slack_id
+      @message = message
+		end
+
+		def call
+
+		end
+	end
+end
+
 class CompatibleLibNotify
+	SLACK_CHANNEL = 'eh-v13s-alerts'
 	LIB_LIST = [
     AUDIT_HERO = 'audit_hero',
     EASY_THROTTLE_LIMIT = 'easy_throttle_limit',
@@ -42,7 +60,7 @@ class CompatibleLibNotify
 	end
 
 	def success?
-		errors.any?
+		errors.blank?
 	end
 
 	def call
