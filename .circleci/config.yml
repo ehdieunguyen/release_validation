@@ -15,7 +15,7 @@ jobs:
           name: "Publish Release on GitHub"
           command: |
             VERSION='v.2.0.0'
-            RELEASE_NOTE="$(node index.js)"
+            RELEASE_NOTE="$(node /usr/src/app/index.js)"
             ~/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./
 
 workflows:
