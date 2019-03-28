@@ -8,14 +8,14 @@ jobs:
     working_directory: ~/app
     docker:
       #- image: cibuilds/github:0.10
-      - image: dieunb/release_testing:0.0.2
+      - image: dieunb/release_testing:0.0.3
     steps:
       - checkout
       - run:
           name: "Publish Release on GitHub"
           command: |
-            VERSION='v.2.0.0'
-            RELEASE_NOTE="$(node /usr/src/app/index.js)"
+            VERSION="$(node /usr/src/app/version.js -f ~/app/app.json)"
+            RELEASE_NOTE="$(node /usr/src/app/release_note.js -f ~/app/CHANGELOG.md -v $VERSION)"
             ~/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./
 
 workflows:
