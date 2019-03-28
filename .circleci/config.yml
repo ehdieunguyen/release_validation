@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/app
     docker:
       #- image: cibuilds/github:0.10
-      - image: dieunb/release_testing:0.0.1
+      - image: dieunb/release_testing:0.0.2
     steps:
       - checkout
       - run:
