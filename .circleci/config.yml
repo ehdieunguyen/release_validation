@@ -8,22 +8,9 @@ jobs:
     working_directory: ~/app
     docker:
       #- image: cibuilds/github:0.10
-      - image: circleci/node:9.8-stretch
+      - image: dieunb/release_testing:0.0.1
     steps:
       - checkout
-      - run:
-          name: Go install
-          command: |
-              sudo apt-get update
-              sudo curl -O https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz
-              sudo tar -xvf go1.8.linux-amd64.tar.gz
-              sudo mv go /usr/local
-              export PATH=$PATH:/usr/local/go/bin
-              go version
-              go get -u github.com/tcnksm/ghr
-      - run:
-          name: yarn install
-          command: yarn
       - run:
           name: "Publish Release on GitHub"
           command: |
