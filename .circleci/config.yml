@@ -16,7 +16,7 @@ jobs:
           command: |
             VERSION='v.2.0.0'
             RELEASE_NOTE="$(node index.js)"
-            ~/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./*/
+            ~/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./
 
 workflows:
   version: 2
