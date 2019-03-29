@@ -1,13 +1,9 @@
-
-workflow "Rubocop" {
+workflow "ValidateChangelog" {
   on = "pull_request"
-  resolves = ["Ruby Conventions"]
+  resolves = ["Check Changlog"]
 }
 
-action "Ruby Conventions" {
-  uses = "docker://docker.io/ehdevops/rubo_general:latest"
+action "Check Changlog" {
+  uses = "docker://dieunb/release_testing:latest"
   secrets = ["GITHUB_TOKEN"]
-  env = {
-    RUBOCOP_CONFIG_FILE = "https://raw.githubusercontent.com/Thinkei/Thinkei/master/.rubocop_default.yml"
-  }
 }
