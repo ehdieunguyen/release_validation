@@ -8,6 +8,7 @@ Changes and additions to the library will be listed here.
 - Tracing for outgoing http 1
 - Tracing for outgoing http 2
 - Tracing for outgoing http 3
+- Refactor 1
 
 ## 0.4.3
 - Tracing and monitoring for [sequel](https://github.com/jeremyevans/sequel)
