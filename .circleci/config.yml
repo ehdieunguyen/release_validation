@@ -16,7 +16,7 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-            VERSION=$(echo `cat ~/app/app.json` | jq .version)
+            VERSION=$(echo `cat ~/app/app.json` | jq .version | tr -d \")
             RELEASE_NOTE=$(node /usr/src/app/release_note.js -f ~/app/CHANGELOG.md -v $VERSION)
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./
 
