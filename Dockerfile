@@ -1,6 +1,9 @@
 FROM debian:stretch-slim
 
-ENV GITHUB_TOKEN
+LABEL maintainer="dieunguyen@employmenthero.com"
+
+ARG BUILDTIME_TOKEN
+ENV GITHUB_TOKEN $BUILDTIME_TOKEN
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends build-essential ca-certificates gnupg2 apt-transport-https apt-utils curl git jq gcc make golang-1.8
