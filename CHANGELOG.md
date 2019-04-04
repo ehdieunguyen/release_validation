@@ -2,7 +2,7 @@
 
 Changes and additions to the library will be listed here.
 
-## 0.4.4
+## 4.14.0
 
 - Tracing and monitoring for [sequel](https://github.com/jeremyevans/sequel)
 - Tracing for outgoing http 1
