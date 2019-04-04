@@ -1,5 +1,2 @@
-# demo_versioning
-Demo versioning
+# Release validation
 
-- Number 1
-- Number 2
