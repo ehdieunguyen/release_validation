@@ -9,13 +9,15 @@ jobs:
     docker:
       #- image: cibuilds/github:0.10
       - image: dieunb/release_testing:latest
+        environment:
+          GITHUB_REPOSITORY: 'ehdieunguyen/demo_versioning'
     steps:
       - checkout
       - run:
           name: "Publish Release on GitHub"
           command: |
-            VERSION="$(node /usr/src/app/version.js -f ~/app/app.json)"
-            RELEASE_NOTE="$(node /usr/src/app/release_note.js -f ~/app/CHANGELOG.md -v $VERSION)"
+            VERSION=$(echo `cat ~/app/app.json` | jq .version)
+            RELEASE_NOTE=$(node /usr/src/app/release_note.js -f ~/app/CHANGELOG.md -v $VERSION)
             ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "${RELEASE_NOTE}" -delete ${VERSION} ./
 
 workflows:
