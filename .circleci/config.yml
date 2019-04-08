@@ -8,9 +8,9 @@ jobs:
     working_directory: ~/app
     docker:
       #- image: cibuilds/github:0.10
-      - image: dieunb/release_testing:latest
+      - image: ehdevops/release_lib:0.0.1
         environment:
-          GITHUB_REPOSITORY: 'ehdieunguyen/demo_versioning'
+          GITHUB_REPOSITORY: 'ehdieunguyen/release_validation'
     steps:
       - checkout
       - run:
